@@ -1,0 +1,47 @@
+=====DOCKER=========
+application layer taks with OS Kernal , kernal tals with hardwere 
+using docker-compose we can build and start an image and container
+
+===Kubernets===
+
+A Kubernetes cluster is a set of machines (either physical or virtual) that run Kubernetes and host applications.
+
+Kubernetes contains the two nodes, 1.master Node and 2.worker Node(contains all the pods(contains the containers))
+master node:contains the (APIServer,Schedular,Controller Manager,and etcd)
+1.intro to Kubenetes(Kubernetes Architecture)
+2.components of Kubernetes(Pod,Service,configmap,secret,Volume,ingress,deployment,statefull,DeamonSet)
+POD==== abstraction of containers
+what is POD: small unit in kubernetes, abstraction over container, usually one application per pod, each pod gets it own IP address to talk to each other
+Service=== for communicate
+what is Service:service is an static IP address (permanant IP address), lifecycle of pod and service are not connected,
+Ingress===route traffic into cluster
+what is Ingress:instead of going to service when your request, the request goes to Ingress
+ConfigMap====external configuration
+what is configMap:External configuration fo Your application(config map is only for non-confedential data only)
+Secret===external configuration(using encodes way)
+what is secret:it is like config map only but used to store secret Data(stores the data in base64 encoded format), Reference secret in deployment or POD
+volume====== data persistent
+what is volume:Storage on local machine or remote, outside of the k8 cluser Note:kubernetes dosent manage data persistance
+Deployments===replicating or pOD blueprints for stateless apps 
+what is deployment:blueprint of pods,abstraction of pods, DB cant be replicate via the Deployment
+statefull===replicating or pOD blueprints for statefull apps eg:liek data bases
+what is statefull: for statefull apps like(mysql,mongoDB,and elastci search), Deployment is for stateless apps, statefullset is for statefull apps or databases
+
+** All the configuration in kubernetes goes through a master node with a process called APIServer
+
+each configuration file(it is in YAML Format) contains three parts 1.metadata, 2.specifiction,3.status(it is automatically generated and added by kubernetes)
+
+===kubernets ** fundamantal concepts**============
+1.learn why
+2.Architecture
+3.core objects in K8
+4.how k8 works
+5.interact with k8 files
+6.manifest files
+7.troubleshooting
+8.misconfigurations
+9.heml charts        
+
+Wwhat is Kubernetes:Kubernetes is opensource container orchestration tool Developed By google ,Helps manage containerized applications helps to manage in different deployment environments
+
+what probles does kubernetes solves?: and what are the tasks of orchestration tool?:
