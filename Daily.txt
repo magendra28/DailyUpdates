@@ -313,3 +313,54 @@ each configuration file(it is in YAML Format) contains three parts 1.metadata, 2
 Wwhat is Kubernetes:Kubernetes is opensource container orchestration tool Developed By google ,Helps manage containerized applications helps to manage in different deployment environments
 
 what probles does kubernetes solves?: and what are the tasks of orchestration tool?:
+
+
+
+============04/12/2024===============
+NGINX:===
+
+a web server refers to both the physical machine and softwere running on the machine
+primary function is to serve web pages to client browser
+
+a web server that takes HTTP request and responds with an HTTP responce 
+a piece of softwere that is runs on server machine and can responds to requests from a broswer that webserver is called NGINX(NGINX is a high performance wens server)
+
+Nginx as a LOAD BALANCEr:
+	distribute incoming traffic across multiple backend servers
+
+PROXY:= acting on behalf of another
+proxy server:
+	 intermediary server that forwards clinet request to other servers
+
+caching is core function of NGINX proxy
+
+NGINX can act as LOAD BALANCER, CACHING and SECURITY and compression and segmentation
+
+Nginx can handle SSL/TSL encryption and decryption
+
+Nginx Proxy can compress the responce to improve bandwidth usage and improve load times
+segmentation-sending responce in chunks breaks the files into smaller chunks
+
+difference between Apache and Nginx
+
+docker-compose up --build -d
+
+Nginx Worker_processes:
+	controls how many parallel process Nginx spawns tohandle client request
+what is worker processes?: 
+	insted of using a new process for every incoming connection, Nginx uses a worker processes that handles many connections using a single threaded event loop
+
+what does the number represent?:
+	the value is no of worker process Nginx should create
+	each worker processess runs independently and can handle its own set of connections
+
+	This Configuration directly influences how well it can handle traffic
+the no of worker process is equal to no of cpu cores
+
+per worker processess how many simultaneously connections can be opend :Default is 512
+if you have one Worker_processes you will be able to serve 1024 Clinets
+
+HTTP is the foundation of world wide web:and default protocol for web communication
+enabling the data exchange between web broswerand web servers
+URL:Uniform REsource Locater is an address of the server that is hosting the web application 
+80 is the default port where all the web applications run
