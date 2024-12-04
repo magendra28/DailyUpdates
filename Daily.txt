@@ -313,7 +313,20 @@ each configuration file(it is in YAML Format) contains three parts 1.metadata, 2
 Wwhat is Kubernetes:Kubernetes is opensource container orchestration tool Developed By google ,Helps manage containerized applications helps to manage in different deployment environments
 
 what probles does kubernetes solves?: and what are the tasks of orchestration tool?:
+cant we stop pods in kubernetes?:
+	In Kubernetes (and Minikube), pods themselves cannot be "stopped" in the traditional sense (like pausing or stopping a service). Kubernetes is designed to ensure that pods in a deployment, replica set, or other workload remain in a running state as long as their managing resources exist.
 
+In Kubernetes we cant stop the pods, insted we can scale then like by setting the repllicas to 0, later if you want that pod to be up and running then just set replicas to 1
+	eg:kubectl scale deployment deployment-name --replicas=1
+	eg:kubectl scale deployment deployment-name --replicas=0
+if youwant u can delete the pod  or u can delete the entire deployment
+	eg:kubectl delete pod pod-name
+	eg:kubectl delete deployment deployment-name
+If you want to "pause" the Minikube environment without entirely stopping it, use:
+	minikube pause 
+	minikube unpause
+Pods in Kubernetes are considered ephemeral(short-lived or Temporary) because they are not permanent. 
+If a pod crashes, Kubernetes doesn't repair it—it creates a new one instead, based on its configuration. This ensures high availability and flexibility.
 
 
 ============04/12/2024===============
@@ -345,7 +358,7 @@ difference between Apache and Nginx
 
 docker-compose up --build -d
 
-Nginx Worker_processes:
+Nginx Worker_processes:(it is a Directive )
 	controls how many parallel process Nginx spawns tohandle client request
 what is worker processes?: 
 	insted of using a new process for every incoming connection, Nginx uses a worker processes that handles many connections using a single threaded event loop
@@ -354,13 +367,64 @@ what does the number represent?:
 	the value is no of worker process Nginx should create
 	each worker processess runs independently and can handle its own set of connections
 
-	This Configuration directly influences how well it can handle traffic
+	This Configuration directly influences how well it can handle traffic(performance)
 the no of worker process is equal to no of cpu cores
-
+Worker_processes auto:=
+	Nginx automatically detects the no of CPU cores avilable on the server and starts a corresponding no of worker nodes
+worker_connections:
 per worker processess how many simultaneously connections can be opend :Default is 512
 if you have one Worker_processes you will be able to serve 1024 Clinets
+
+Server Block:
+	Defines how nginx should handle request for a particular domain or IP address
+	how to listen for connections:
+		listen :the IP address and port on which teh server will accepts request
+		server-name:which domain or IP address this server block should respond to
+		location Block: how specific types of requests(such as URLS or file types) should be handled
+			proxy_pass:tells Nginx to pass tehrequest to another service making it act as reverse proxy
+		Upstream Blocks:refers to servers that nginx forwards request to
+		upstream_server: refers to traffic going from a client toward the source or higher-level infra in this case application server
+		downstream_server:traffic going back to the client is downstream
+
+we need to tell Nginx to include the corresponding MIME types in the content-type response header when sending a file
+this helps the clinet understand how to process or render the file
+
+	which domain or subdomain the config applies to
+	how to route the request
 
 HTTP is the foundation of world wide web:and default protocol for web communication
 enabling the data exchange between web broswerand web servers
 URL:Uniform REsource Locater is an address of the server that is hosting the web application 
 80 is the default port where all the web applications run
+443 is the default port for ssl
+SSL: 
+	SSL certificates enable encryption by using pblic-key cryptography
+	when a user connects to a website via HTTPs, the web server provides its ssl certificate , which contains a public key
+openssl:
+	open-source tool to generate keys, certificates and managing secure connections
+	CMD for generating openssl certificate:
+		openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nginx-selfsigned.key -out nginx-selfsigned.crt
+		openssl req:
+			initiates a certificate request generation process
+		-x509:
+			Tells openssl to output a certificate in this standard certificate format
+		-node:
+			Tells openssl not to encrypt the private key with the passphare
+		-newkey rsa:2048:
+			ceates a 2048 bit RSA key pair(RSA is commonly public-key encryption algo)
+		
+Nginx-Configuration:
+	the main config file is typically names "nginx.config" and usually located in the "/etc/nginx" folder
+	Using custom syntax comprising Directive and Blocks
+Location directive in the Nginx config file says how the server should process specific types of request
+specify the location that contains your file
+ we can use NGINX in kubernets also like Ingress Controller :
+	it handles the routing to the appropriate service based on rules defined in an ingress source
+ what is Ingress Controller:
+	Aspecialized load balancer for managing ingress(incoming) traffic in kubernetes
+Configuring Nginx Proxy:
+
+301:
+	Redirects the Client(browser) to HTTPS using 301 status code, which indicate a permanant Redirect
+	
+
