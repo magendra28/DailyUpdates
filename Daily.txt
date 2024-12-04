@@ -428,3 +428,4 @@ Configuring Nginx Proxy:
 	Redirects the Client(browser) to HTTPS using 301 status code, which indicate a permanant Redirect
 	
 
+
