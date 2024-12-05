@@ -328,6 +328,14 @@ If you want to "pause" the Minikube environment without entirely stopping it, us
 Pods in Kubernetes are considered ephemeral(short-lived or Temporary) because they are not permanent. 
 If a pod crashes, Kubernetes doesn't repair it—it creates a new one instead, based on its configuration. This ensures high availability and flexibility.
 
+Deployment Manages PODS
+kubectl get service -> it will give all the services which are running
+if we want to validate that servie like in port it is running the ->
+	kubectl describe service service-name : it will give all the details
+kubectl get pod -o wide -> it will give infor about pod like in which address it is running
+kubectl get deployment deployment-name -o yaml -> it will give the complete configuration file
+mikukube service service-name :
+	if you create an external serviec and u need to access the pod then this is the command
 
 ============04/12/2024===============
 NGINX:===
