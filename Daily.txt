@@ -114,6 +114,39 @@ EC2: elastic compute cloud - server -- core of aws - every other service of aws 
 
 ** if you don't want to use test case then you can mark @Ignore annotation on that test case
 
+====DESIGN Patterns 17/12/2024================
+why and what and when to use a design pattern:
+what are design principles: these are some principles to write a code
+what are design patterns:A design pattern is a general, reusable solution to a commonly occurring problem within a given context in software design
+Types of design pattern: creational, structural and behavioral design pattern
+
+Won't this cause DEADLOCK, if multiple classes will write to same file? if we create only one logger file for Multiple classes, here they will use Buffer (it is like a queue) 
+
+Singleton design Pattern: allows us to create a single instance(only one instance)
+
+In Spring every objected created is a single instance(called as beans)
+Instances are created at run time
+we will create instances using constructor
+steps for creating a singleton design pattern:
+step1:constructor hiding (making constructor as a private)
+make the method as static (static initializer)
+Step2: Global Access Point(create a static method)
+check if an object is exists if yes return it or else create a new one and save it , how do we save ? 
+Step3:using a static variable and implement logic
+
+if you want to make any thing thread safe then declare that method or variable as a synchronized
+
+Reflections have access to private fields in java
+
+---Builder Design Pattern----
+simplest way to create an object is constructor
+ -on demand initializations using builder pattern
+ -Global Initialization and Immutability and type safety these are the things which is provided by the Builder design pattern
+Step1:create static inner class
+Step2:copy all the fields of the outer class
+Step3:expose the setters on the builder
+Step4:Build method
+
 ====25/10/2024===========
 what is angular: it is frontend JavaScript framework ,it helps with building interactive, modern web interface
 it is also a collection of tools and features, CLI, Debugging tools and IDE plugins
