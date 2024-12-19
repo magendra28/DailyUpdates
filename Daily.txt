@@ -136,6 +136,9 @@ Step3:using a static variable and implement logic
 
 if you want to make any thing thread safe then declare that method or variable as a synchronized
 
+when an object is stateless then u create an singleton
+when an object has state then u cant create a singleton
+
 Reflections have access to private fields in java
 
 ---Builder Design Pattern----
@@ -145,7 +148,22 @@ simplest way to create an object is constructor
 Step1:create static inner class
 Step2:copy all the fields of the outer class
 Step3:expose the setters on the builder
-Step4:Build method
+Step4:Build method this is the last method, once u called the build() method objects will be created and returned to the outer class and that object cant be changed
+Instead of implementing the Builder pattern u can use @Builder also
+
+-----Prototype and Registry Design pattern----------
+Prototype pattern mostly used in Games development
+instead of creating the new objects ,first create a object and copy that object and use that object or modify that object - this is called prototype
+step1:create a cloneable interface
+step2:implementing that cloneable object
+	cloning is two types
+	1.shallow and Deep cloning
+
+step3:create a prototype, copy clone and modify
+
+Registry: a simple way to store the prototype and fetch when it is needed
+	we can store lot of prototypes in a registry
+
 
 ====25/10/2024===========
 what is angular: it is frontend JavaScript framework ,it helps with building interactive, modern web interface
